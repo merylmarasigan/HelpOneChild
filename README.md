@@ -1,3 +1,7 @@
+# Help One Child CarePortal Voting Platform
+
+This project creates a tablet-friendly voting platform for Help One Child's fundraising events in partnership with CarePortal. During four consecutive fundraisers (May 6-9, 2025), donors will engage with CarePortal's platform by reviewing and voting on 3-5 care requests per event. Each request will showcase a compelling story about families in need - from a mother needing beds to a grandmother requiring assistance with utilities. The platform will display these requests in a format resembling CarePortal, allow simple voting without login requirements, prompt users for optional email signups afterward, and track results to announce which family's needs will be met at each event. This initiative aims to familiarize donors with the CarePortal experience and encourage continued engagement beyond the fundraisers.
+
 ## ROADMAP
 - [ ] Create a voting platform for Care Portal fundraising events
 - [ ] Set up UI that resembles CarePortal branding and styling
