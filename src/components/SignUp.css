@@ -1,0 +1,52 @@
+.sign-up{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.form{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.name-input, .email-input{
+    margin: 35px;
+    text-align: start;
+}
+
+button{
+    display: inline; 
+    margin: 10px;
+}
+
+.skip-btn{
+    background-color: white;
+    color: #ff8c00;
+}
+
+label, input{
+    display:inline;
+}
+
+input{
+    margin-top: 15px;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.inner {
+    width: 70%; /* Takes 80% of parent container width */
+    min-height: 55vh; /* 60% of viewport height */
+    padding: 5%; /* Responsive padding */
+}
+
+.form{
+    margin-top: 70px;
+}
+
+h1{
+    margin-top: 30px;
+}

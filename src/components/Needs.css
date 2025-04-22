@@ -1,0 +1,21 @@
+.needs {
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.needs ul {
+    display: inline-block;
+    text-align: left;
+}
+
+.needs-header {
+    display: flex;
+    align-items: center;
+}
+
+.needs-header > p {
+    margin-left: 5px;
+    font-size: 14px;
+}
+
