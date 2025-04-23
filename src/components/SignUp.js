@@ -1,13 +1,12 @@
 import React from 'react'
-import Bar from './Bar';
 import './SignUp.css'
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
     return(
     <div className='sign-up container'>
     
        <div className='inner'>
-             <Bar/>
              <h1>Sign Up For News and Updates!</h1>
              <hr></hr>
              <form className='form'>
@@ -21,9 +20,10 @@ const SignUp = () => {
                     <input type='text'/>
                 </div>
 
-                <button>Sign Up</button>
-                <button className='skip-btn'>Skip</button>
-
+                <div className='btns'>
+                    <button>Sign Up</button>
+                    <Link to='/'><button className='skip-btn'>Skip</button></Link>
+                </div>
                 
              </form>
         </div>

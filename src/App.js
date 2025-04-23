@@ -2,17 +2,80 @@ import './App.css';
 // import RequestCard from'./components/RequestCard'
 import Request from './components/Request';
 import Bar from './components/Bar';
+import SignUp from './components/SignUp';
 // import requests from './data/request';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {useState, useEffect} from 'react';
+import supabase from './lib/supabaseClient';
+
 function App() {
+  const [requests, setRequests] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchRequests = async () => {
+      try {
+        const {data, error} = await supabase
+          .from('test_reqs')
+          .select();
+
+        if (error) {
+          setError('Could not fetch data');
+          setRequests(null);
+          console.log(error);
+        } else if (data) {
+          setRequests(data);
+          console.log(data);
+          setError(null);
+        }
+      } catch (err) {
+        console.error("Unexpected error:", err);
+        setError('An unexpected error occurred');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRequests();
+  }, []);
+
   return (
-    <div className="App container">
-      <Bar/>
-      <Request/>
-      <Request />
-      {/* {requests.map((req) => {
-        return <Request req = {req} title={req.title} description={req.description} urgency={req.description} details={req.details} needs={req.needs}/>
-      })} */}
-    </div>
+    <Router>
+      <div className="App container">
+        <Bar/>
+        <div className='content'>
+          <Switch>
+            <Route path='/sign-up'>
+              <SignUp/>
+            </Route>
+
+            <Route exact path="/">
+              {loading ? (
+                <p>Loading requests...</p>
+              ) : error ? (
+                <p>Error: {error}</p>
+              ) : requests && requests.length > 0 ? (
+                requests.map((r) => (
+                  <Request 
+                    key={r.id} 
+                    id={r.id} 
+                    title={r.title} 
+                    description={r.description} 
+                    urgency={r.urgency} 
+                    details={r.details}
+                    needs={r.needs}
+                    needs_cost = {r.total_needs_cost}
+                  />
+                ))
+              ) : (
+                <p>No requests found.</p>
+              )}
+            </Route>
+          </Switch>
+        </div>
+      </div>
+    </Router>
   );
 }
 

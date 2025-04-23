@@ -1,8 +1,9 @@
 .sign-up{
     display: flex;
+    /* flex-direction: column; */
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    /* align-items: center;
+    height: 100vh; */
     text-align: center;
 }
 
@@ -31,22 +32,24 @@ label, input{
 }
 
 input{
-    margin-top: 15px;
+    margin-top: 10px;
     width: 100%;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
-.inner {
-    width: 70%; /* Takes 80% of parent container width */
-    min-height: 55vh; /* 60% of viewport height */
-    padding: 5%; /* Responsive padding */
+.btns{
+    margin-top: 75px;
 }
+
+
 
 .form{
     margin-top: 70px;
 }
 
-h1{
-    margin-top: 30px;
+
+.inner {
+    width: 70%; /* Takes 80% of parent container width */
+    padding: 5%; /* Responsive padding */
 }
