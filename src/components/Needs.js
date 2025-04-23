@@ -25,8 +25,6 @@ const Needs = (props) => {
                 {needs.map((n) => {
                     return <li>{n.item} ({n.quantity} out of {n.quantity} still needed) </li>
                 })}
-            {/* <li>Infant Car Seat (1 out of 1 still needed)</li>
-            <li>Single Stroller (1 out of 1 still needed)</li> */}
             </ul>
         </div>
     );

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Request.css'; // We'll create this CSS file next
+import './Request.css'; 
 import Needs from './Needs.js'
 
 const Request = (props) => {

@@ -12,17 +12,22 @@ const SignUp = () => {
              <form className='form'>
                 <div className='name-input'>
                     <label>Name:</label>
-                    <input type='text'/>
+                    <input type='text' placeholder="Jane Doe"/>
                 </div>
+
+                {/* <div className='name-input'>
+                    <label>Last Name:</label>
+                    <input type='text'/>
+                </div> */}
 
                 <div className='email-input'>
                     <label>Email:</label>
-                    <input type='text'/>
+                    <input type='text' placeholder="janedoe@email.com"/>
                 </div>
 
                 <div className='btns'>
                     <button>Sign Up</button>
-                    <Link to='/'><button className='skip-btn'>Skip</button></Link>
+                    <Link to='/' style={{textDecorationColor:'#ff8c00'}}><button className='skip-btn'>Skip</button></Link>
                 </div>
                 
              </form>

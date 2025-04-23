@@ -2,19 +2,25 @@
     display: flex;
     /* flex-direction: column; */
     justify-content: center;
-    /* align-items: center;
-    height: 100vh; */
+    align-items: center;
+    /* height: 100vh; */
     text-align: center;
 }
 
 .form{
+    /* margin-bottom: 50px; */
+    /* border: black solid 1px; */
     margin-top: 50px;
-    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .name-input, .email-input{
-    margin: 35px;
-    text-align: start;
+    margin: 15px;
+    /* text-align: start; */
+    /* border: green solid 1px; */
+    width: 100%;
 }
 
 button{
@@ -31,21 +37,18 @@ label, input{
     display:inline;
 }
 
-input{
+input {
     margin-top: 10px;
-    width: 100%;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    width: 60%;
+    margin-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 1px solid #ccc; /* Add this line to ensure all borders are visible */
 }
 
 .btns{
-    margin-top: 75px;
-}
-
-
-
-.form{
-    margin-top: 70px;
+    margin-top: 30px;
+    /* border: red solid 1px; */
 }
 
 
@@ -53,3 +56,4 @@ input{
     width: 70%; /* Takes 80% of parent container width */
     padding: 5%; /* Responsive padding */
 }
+
