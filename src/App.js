@@ -27,7 +27,8 @@ function App() {
       try {
         const {data, error} = await supabase
           .from('test_reqs')
-          .select();
+          .select()
+          .order('id');
 
         if (error) {
           setError('Could not fetch data');

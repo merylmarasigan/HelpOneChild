@@ -2,6 +2,7 @@ import React from 'react';
 import './Request.css'; 
 import Needs from './Needs.js'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min.js';
+import supabase from '../lib/supabaseClient.js';
 
 const Request = (props) => {
     const id = props.id;
@@ -12,8 +13,27 @@ const Request = (props) => {
     const needs = props.needs;
     const history = useHistory()
 ;
-    const handleClick = () => {
+    const handleClick = async (e) => {
         console.log('clicked');
+
+        const {data, error} = await supabase
+        .from('test_reqs')
+        .select('votes')
+        .eq('id',id)
+        .single();
+
+        if(error){
+            console.log('Coult not fetch votes');
+            return;
+        }
+
+        const newCount = (data?.votes || 0) + 1;
+
+        const {updatedData, updateError} = await supabase
+        .from('test_reqs')
+        .update({votes: newCount})
+        .eq('id', id);
+
         history.push('/sign-up', { refresh: true })
     }
 
