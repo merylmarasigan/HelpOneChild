@@ -5,10 +5,10 @@ This project creates a tablet-friendly voting platform for Help One Child's fund
 ## ROADMAP
 - [ ] Create a voting platform for Care Portal fundraising events
 - [X] Set up UI that resembles CarePortal branding and styling
-- [ ] Implement tablet-friendly interface to display 3-5 care requests per event
+- [X] Implement tablet-friendly interface to display 3-5 care requests per event
 - [X] Display request information (request number, timeline/urgency, purpose statement, description)
 - [ ] Create simple voting mechanism (no login required)
-- [ ] Add post-voting prompt for users to sign up for updates
+- [X] Add post-voting prompt for users to sign up for updates
 - [ ] Set up Google Sheets integration to store voting results
 - [ ] Develop results display to show which request won
 - [ ] Test application thoroughly before the May 6-9 events

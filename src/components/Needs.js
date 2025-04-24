@@ -22,8 +22,8 @@ const Needs = (props) => {
             </div>
 
             <ul>
-                {needs.map((n) => {
-                    return <li>{n.item} ({n.quantity} out of {n.quantity} still needed) </li>
+                {needs.map((n, idx) => {
+                    return <li key={idx}>{n.item} ({n.quantity} out of {n.quantity} still needed) </li>
                 })}
             </ul>
         </div>

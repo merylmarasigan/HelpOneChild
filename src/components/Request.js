@@ -1,6 +1,7 @@
 import React from 'react';
 import './Request.css'; 
 import Needs from './Needs.js'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min.js';
 
 const Request = (props) => {
     const id = props.id;
@@ -9,6 +10,12 @@ const Request = (props) => {
     const urgency = props.urgency;
     const details = props.details;
     const needs = props.needs;
+    const history = useHistory()
+;
+    const handleClick = () => {
+        console.log('clicked');
+        history.push('/sign-up', { refresh: true })
+    }
 
 
     return (
@@ -37,7 +44,7 @@ const Request = (props) => {
 
             <Needs needs ={needs} total_cost = {props.needs_cost}/>
             
-            <button>Yes, I can help!</button>
+            <button onClick={handleClick}>Yes, I can help!</button>
             <div className='tagline'>
                 <p>pray.serve.give</p>
             </div> 
