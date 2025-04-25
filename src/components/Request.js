@@ -3,6 +3,7 @@ import './Request.css';
 import Needs from './Needs.js'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min.js';
 import supabase from '../lib/supabaseClient.js';
+import { useState } from 'react';
 
 const Request = (props) => {
     const id = props.id;
@@ -11,11 +12,12 @@ const Request = (props) => {
     const urgency = props.urgency;
     const details = props.details;
     const needs = props.needs;
-    const history = useHistory()
-;
-    const handleClick = async (e) => {
-        console.log('clicked');
+    const votes = props.votes;
+    const history = useHistory();
 
+    const handleClick = async (e) => {
+
+        //when 'YES, I CAN HELP!' button is clicked, vote count for that request is incremented
         const {data, error} = await supabase
         .from('test_reqs')
         .select('votes')
@@ -39,7 +41,9 @@ const Request = (props) => {
 
 
     return (
+        
         <div className='card'>
+            {votes !== null  && <p className='num-votes'>{votes} votes</p>}
             <div className='request-top'>
                 <p className='request-time'>⚠️ Within 7-10 days</p>
                 <p className='urgency'>{urgency} Request</p>
@@ -64,7 +68,8 @@ const Request = (props) => {
 
             <Needs needs ={needs} total_cost = {props.needs_cost}/>
             
-            <button onClick={handleClick}>Yes, I can help!</button>
+            {votes === null && <button onClick={handleClick}>Yes, I can help!</button>}
+            
             <div className='tagline'>
                 <p>pray.serve.give</p>
             </div> 

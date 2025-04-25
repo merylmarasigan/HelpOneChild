@@ -1,10 +1,9 @@
 import './App.css';
-// import RequestCard from'./components/RequestCard'
 import Request from './components/Request';
 import Bar from './components/Bar';
 import SignUp from './components/SignUp';
 import SignUpConfirmation from './components/SignUpConfirmation';
-// import requests from './data/request';
+import Results from './components/Results';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import supabase from './lib/supabaseClient';
@@ -75,6 +74,7 @@ function App() {
                     details={r.details}
                     needs={r.needs}
                     needs_cost = {r.total_needs_cost}
+                    votes = {null}
                   />
                 ))
               ) : (
@@ -82,8 +82,8 @@ function App() {
               )}
             </Route>
 
-            <Route path='/sign-up-confirmation'>
-              <SignUpConfirmation/>
+            <Route path='/analytics'>
+              <Results/>
             </Route>
 
           </Switch>
