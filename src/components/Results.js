@@ -36,6 +36,147 @@ const Results = () => {
 
         fetchResults();
     },[day,])
+
+    const handleReqDownload = () => {
+        const downloadCR = async () => {
+            try {
+                // Show loading state if desired
+                // setIsLoading(true);
+                
+                // Fetch data from Supabase
+                const { data, error } = await supabase
+                  .from('test_reqs')
+                  .select('*');
+                
+                if (error) {
+                  console.error('Error fetching data:', error);
+                  alert('Failed to fetch data from database');
+                  return;
+                }
+                
+                if (!data || data.length === 0) {
+                  alert('No data to export');
+                  return;
+                }
+                
+                // Convert to CSV
+                const headers = Object.keys(data[0]);
+                
+                // Create CSV header row
+                let csvContent = headers.join(',') + '\n';
+                
+                // Add data rows
+                data.forEach(row => {
+                  const values = headers.map(header => {
+                    const value = row[header];
+                    // Handle special cases (arrays, objects, null values)
+                    if (value === null) return '';
+                    if (typeof value === 'object') return `"${JSON.stringify(value).replace(/"/g, '""')}"`;
+                    if (typeof value === 'string') return `"${value.replace(/"/g, '""')}"`;
+                    return value;
+                  });
+                  csvContent += values.join(',') + '\n';
+                });
+                
+                // Create download link
+                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                
+                // Set download attributes
+                link.setAttribute('href', url);
+                link.setAttribute('download', 'CareRequests.csv');
+                link.style.visibility = 'hidden';
+                
+                // Append to document, click, and remove
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Clean up
+                URL.revokeObjectURL(url);
+                
+                // Hide loading state if used
+                // setIsLoading(false);
+            } catch (err) {
+            console.error('Error generating CSV:', err);
+            alert('Failed to generate CSV file');
+            // setIsLoading(false);
+            }
+        }
+        downloadCR();
+    }
+
+    const handleRegisteredUsersDownload = () => {
+        const downloadRU = async () => {
+            try {
+                // Show loading state if desired
+                // setIsLoading(true);
+                
+                // Fetch data from Supabase
+                const { data, error } = await supabase
+                  .from('test_users')
+                  .select('*');
+                
+                if (error) {
+                  console.error('Error fetching data:', error);
+                  alert('Failed to fetch data from database');
+                  return;
+                }
+                
+                if (!data || data.length === 0) {
+                  alert('No data to export');
+                  return;
+                }
+                
+                // Convert to CSV
+                const headers = Object.keys(data[0]);
+                
+                // Create CSV header row
+                let csvContent = headers.join(',') + '\n';
+                
+                // Add data rows
+                data.forEach(row => {
+                  const values = headers.map(header => {
+                    const value = row[header];
+                    // Handle special cases (arrays, objects, null values)
+                    if (value === null) return '';
+                    if (typeof value === 'object') return `"${JSON.stringify(value).replace(/"/g, '""')}"`;
+                    if (typeof value === 'string') return `"${value.replace(/"/g, '""')}"`;
+                    return value;
+                  });
+                  csvContent += values.join(',') + '\n';
+                });
+                
+                // Create download link
+                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                
+                // Set download attributes
+                link.setAttribute('href', url);
+                link.setAttribute('download', 'RegisteredUsers.csv');
+                link.style.visibility = 'hidden';
+                
+                // Append to document, click, and remove
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Clean up
+                URL.revokeObjectURL(url);
+                
+                // Hide loading state if used
+                // setIsLoading(false);
+            } catch (err) {
+            console.error('Error generating CSV:', err);
+            alert('Failed to generate CSV file');
+            // setIsLoading(false);
+            }
+        }
+        downloadRU();
+    }
+
      
     return (
         <div>
@@ -54,8 +195,6 @@ const Results = () => {
                     <option value="2">Day 2</option>
                     <option value="3">Day 3</option>
                 </select>
-
-                
             </div>
            
             {
@@ -74,7 +213,11 @@ const Results = () => {
                   ))
             }
 
-           
+            <div className='download-btns'>
+                <button onClick={handleReqDownload}>Download CareRequests.csv</button>
+                <button onClick={handleRegisteredUsersDownload}>Download RegisteredUsers.csv</button>
+            </div>
+            
 
 
         </div>

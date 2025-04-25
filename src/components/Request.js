@@ -3,7 +3,6 @@ import './Request.css';
 import Needs from './Needs.js'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min.js';
 import supabase from '../lib/supabaseClient.js';
-import { useState } from 'react';
 
 const Request = (props) => {
     const id = props.id;

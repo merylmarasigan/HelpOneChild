@@ -2,7 +2,6 @@ import './App.css';
 import Request from './components/Request';
 import Bar from './components/Bar';
 import SignUp from './components/SignUp';
-import SignUpConfirmation from './components/SignUpConfirmation';
 import Results from './components/Results';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {useState, useEffect} from 'react';
