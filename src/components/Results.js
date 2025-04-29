@@ -38,7 +38,25 @@ const Results = () => {
         }
 
         fetchResults();
-    },[day,])
+
+        // Set up real-time subscription
+        const channel = supabase
+            .channel('table-db-changes')
+            .on('postgres_changes', { 
+                event: 'UPDATE', 
+                schema: 'public', 
+                table: 'care_reqs' 
+            }, () => {
+                console.log('Change detected at:', new Date().toTimeString());
+                fetchResults();
+            })
+            .subscribe();
+
+        // Clean up subscription when component unmounts
+        return () => {
+            supabase.removeChannel(channel);
+        };
+    },[day])
 
     const handleReqDownload = () => {
         const downloadCR = async () => {

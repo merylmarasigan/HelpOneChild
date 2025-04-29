@@ -21,8 +21,7 @@ function App() {
   const day = today.getDate();
 
   const date = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
-  console.log('date: ', date)
-  // const date = '2025-05-09'
+  // const date = '2025-04-28';
   
   // Function to trigger a refetch
   const triggerRefetch = () => {
