@@ -1,14 +1,64 @@
-.day-label{
-    margin-right: 10px;
-}
-.drop-down{
+.drop-down {
     font-size: 20px;
-    align-items: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-top: 30px;
     margin-bottom: 30px;
-    
+    position: relative;
+    z-index: 100;
+    width: 100%;
 }
+label{
+    margin-right: 10px;
+}
+
+/* Style for the select element */
+#dates {
+    position: relative;
+    z-index: 101;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 6px 10px;
+    background-color: white;
+    font-size: 16px;
+    min-width: 120px;
+    appearance: menulist; /* Ensures native dropdown appearance */
+    -webkit-appearance: menulist; /* For Safari */
+}
+
+/* Styles for dropdown options */
+#dates option {
+    padding: 8px 12px;
+    font-size: 16px;
+    background-color: white;
+    border: none;
+}
+
 
 .download-btns{
     margin-bottom: 50px;
+}
+
+/* Ensure any content below the dropdown has lower z-index */
+.content-container {
+    position: relative;
+    z-index: 10;
+}
+
+/* Media queries for responsive design */
+@media screen and (max-width: 768px) {
+    .drop-down {
+        width: 100%;
+    }
+    
+    #dates {
+        min-width: 100px;
+        width: auto;
+    }
+    
+    /* Ensure options display properly on small screens */
+    #dates option {
+        padding: 10px;
+    }
 }

@@ -14,26 +14,35 @@ const Request = (props) => {
     const votes = props.votes;
     const history = useHistory();
 
+    const timeframe = {'Normal': '7-10 days', 'High':'72 hours', 'Urgent': '24 hours'}
+
     const handleClick = async (e) => {
 
         //when 'YES, I CAN HELP!' button is clicked, vote count for that request is incremented
         const {data, error} = await supabase
-        .from('test_reqs')
+        .from('care_reqs')
         .select('votes')
         .eq('id',id)
         .single();
 
         if(error){
-            console.log('Coult not fetch votes');
+            console.log('Could not fetch votes');
             return;
         }
 
         const newCount = (data?.votes || 0) + 1;
 
-        const {updatedData, updateError} = await supabase
-        .from('test_reqs')
+        const {data: updatedData, error: updateError} = await supabase
+        .from('care_reqs')
         .update({votes: newCount})
         .eq('id', id);
+
+        if (updateError) {
+            console.log('Could not update votes:', updateError);
+            return;
+        }
+    
+        console.log('Vote successfully updated to:', newCount);
 
         history.push('/sign-up', { refresh: true })
     }
@@ -44,7 +53,7 @@ const Request = (props) => {
         <div className='card'>
             {votes !== null  && <p className='num-votes'>{votes} votes</p>}
             <div className='request-top'>
-                <p className='request-time'>⚠️ Within 7-10 days</p>
+                <p className='request-time'>⚠️ Within {timeframe[urgency]}</p>
                 <p className='urgency'>{urgency} Request</p>
             </div>
             <h2>{title}</h2>
@@ -67,7 +76,7 @@ const Request = (props) => {
 
             <Needs needs ={needs} total_cost = {props.needs_cost}/>
             
-            {votes === null && <button onClick={handleClick}>Yes, I can help!</button>}
+            {votes === null && <button onClick={handleClick}>Vote!</button>}
             
             <div className='tagline'>
                 <p>pray.serve.give</p>

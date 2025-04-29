@@ -13,6 +13,16 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [shouldRefetch, setShouldRefetch] = useState(0);
+
+  const today = new Date();
+
+  const year = today.getFullYear();
+  const month = today.getMonth() + 1;
+  const day = today.getDate();
+
+  const date = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+  console.log('date: ', date)
+  // const date = '2025-05-09'
   
   // Function to trigger a refetch
   const triggerRefetch = () => {
@@ -21,12 +31,11 @@ function App() {
 
   useEffect(() => {
     const fetchRequests = async () => {
+
+      
       setLoading(true);
       try {
-        const {data, error} = await supabase
-          .from('test_reqs')
-          .select()
-          .order('id');
+        const {data, error} = await supabase.from('care_reqs').select().eq('date', date).order('id');
 
         if (error) {
           setError('Could not fetch data');
@@ -45,7 +54,7 @@ function App() {
     };
 
     fetchRequests();
-  }, [shouldRefetch]); // This will trigger a refetch when shouldRefetch changes
+  }, [shouldRefetch, date]); // This will trigger a refetch when shouldRefetch changes
   
   return (
     <Router>

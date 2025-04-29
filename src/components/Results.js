@@ -11,16 +11,17 @@ const Results = () => {
 
 
     useEffect(() => {
+        const dates= {"1":"2025-05-06", "2": "2025-05-07", "3": "2025-05-09"}
 
         const fetchResults = async() => {
 
             let data, error;
             if (day === '0'){
-                const result = await supabase.from('test_reqs').select().order('votes', {ascending: false});
+                const result = await supabase.from('care_reqs').select().order('votes', {ascending: false});
                 data = result.data;
                 error = result.error;
             }else{
-                const result = await supabase.from('test_reqs').select().eq('day', day).order('votes', {ascending: false});
+                const result = await supabase.from('care_reqs').select().eq('date', dates[day]).order('votes', {ascending: false});
                 data = result.data;
                 error = result.error;
             }
@@ -31,6 +32,8 @@ const Results = () => {
 
             if(data){
                 setRanking(data);
+                console.log('data gathered!: ', data)
+
             }
         }
 
@@ -45,7 +48,7 @@ const Results = () => {
                 
                 // Fetch data from Supabase
                 const { data, error } = await supabase
-                  .from('test_reqs')
+                  .from('care_reqs')
                   .select('*');
                 
                 if (error) {
@@ -184,7 +187,7 @@ const Results = () => {
             <hr/>
 
             <div className='drop-down'> 
-                 <label for='dates' className='day-label'>Day:</label>
+                 <label htmlFor='dates' className='day-label'>Day:</label>
                 <select
                     name="day"
                     id="dates"
@@ -198,7 +201,7 @@ const Results = () => {
             </div>
            
             {
-                ranking.map((r,idx) => (
+                ranking.length > 0 && ranking.map((r,idx) => (
                     <Request 
                       key={idx} 
                       id={r.id} 
@@ -212,6 +215,8 @@ const Results = () => {
                     />
                   ))
             }
+
+            {ranking.length === 0 && <p>No data to display</p>}
 
             <div className='download-btns'>
                 <button onClick={handleReqDownload}>Download CareRequests.csv</button>

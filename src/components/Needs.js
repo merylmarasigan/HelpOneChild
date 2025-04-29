@@ -18,12 +18,12 @@ const Needs = (props) => {
         <div className='needs'>
             <div className='needs-header'>
                 <h3>Needs</h3>
-                <p>(Estimated Value: ${props.total_cost})</p>
+                
             </div>
 
             <ul>
                 {needs.map((n, idx) => {
-                    return <li key={idx}>{n.item} ({n.quantity} out of {n.quantity} still needed) </li>
+                    return <li key={idx}>{n}</li>
                 })}
             </ul>
         </div>
