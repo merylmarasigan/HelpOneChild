@@ -41,6 +41,10 @@ const Request = (props) => {
             console.log('Could not update votes:', updateError);
             return;
         }
+
+        if(updatedData){
+            console.log('Vote count updated!');
+        }
     
         console.log('Vote successfully updated to:', newCount);
 

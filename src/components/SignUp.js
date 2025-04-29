@@ -60,7 +60,7 @@ const SignUp = ({ onNavigateBack }) => {
     return(
     <div className='sign-up container'>
        { signedUp === false && <div className='inner'>
-            <h1>Learn How to Meet Other Care Portal Requets!</h1>
+            <h1>Learn How to Meet Other CarePortal Requets!</h1>
             <hr></hr>
             <form className='form'>
             <div className='name-input'>
