@@ -9,8 +9,8 @@ This project creates a tablet-friendly voting platform for Help One Child's fund
 - [X] Display request information (request number, timeline/urgency, purpose statement, description)
 - [X] Create simple voting mechanism (no login required)
 - [X] Add post-voting prompt for users to sign up for updates
-- [ ] Set up Google Sheets integration to store voting results
-- [ ] Develop results display to show which request won
+- [ ] Set up Google Sheets integration to store voting results --> not able to integrate with google based on free version of supabase, decided to just have ability to download data from database as excel file (clients were okay with this approach)
+- [X] Develop results display to show which request won
 - [ ] Test application thoroughly before the May 6-9 events
 
 ## SCHEMA
@@ -47,3 +47,9 @@ This project creates a tablet-friendly voting platform for Help One Child's fund
 - Implemented page redirects
 - Incremented Care request's votes count on supabase db whenever 'YES, I CAN HELP!' is clicked for that request
 
+### April 24, 2025
+- added analytics page what shows ranking of requests by vote, also allowed to filter by date
+- implemented ability to download care request and registered users data as csv file
+
+### April 28,2025
+- Made UI changes based on client feedback (note to self: need to swap logos once Valerie sends correct one)
