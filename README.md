@@ -53,3 +53,6 @@ This project creates a tablet-friendly voting platform for Help One Child's fund
 
 ### April 28,2025
 - Made UI changes based on client feedback (note to self: need to swap logos once Valerie sends correct one)
+
+### April 29, 2025
+- Made Analytics page update in real time

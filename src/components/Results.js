@@ -39,7 +39,7 @@ const Results = () => {
 
         fetchResults();
 
-        // Set up real-time subscription
+        // Set up real-time subscription that will rerender component whenever data change is detected
         const channel = supabase
             .channel('table-db-changes')
             .on('postgres_changes', { 
