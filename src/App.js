@@ -20,8 +20,15 @@ function App() {
   const month = today.getMonth() + 1;
   const day = today.getDate();
 
-  const date = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
-  // const date = '2025-04-28';
+  let date = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+  // let date = '2025-05-11';
+
+  if(date < '2025-05-06'){
+    date = '2025-05-06'
+  }
+  if(date > '2025-05-08'){
+    date = '2025-05-08'
+  }
   
   // Function to trigger a refetch
   const triggerRefetch = () => {

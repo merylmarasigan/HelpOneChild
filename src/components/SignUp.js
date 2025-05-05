@@ -23,7 +23,7 @@ const SignUp = ({ onNavigateBack }) => {
         }
 
         const {data, error} = await supabase
-        .from('test_users')
+        .from('users')
         .insert([{email, name}])
         .select()
 

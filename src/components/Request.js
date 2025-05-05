@@ -58,7 +58,7 @@ const Request = (props) => {
             {votes !== null  && <p className='num-votes'>{votes} votes</p>}
             <div className='request-top'>
                 <p className='request-time'>⚠️ Within {timeframe[urgency]}</p>
-                <p className='urgency'>{urgency} Request</p>
+                <p className='urgency'>Urgency: {urgency}</p>
             </div>
             <h2>{title}</h2>
             <hr/>
@@ -71,9 +71,9 @@ const Request = (props) => {
                 <p><strong>Request</strong>: #{id}</p>
                 <p><strong>Children Served</strong>: {details.children_served}</p>
                 <p><strong>Adults Served</strong>: {details.adults_served}</p>
-                <p><strong>Tier {details.tier}</strong>: Physical needs</p>
+                {/* <p><strong>Tier {details.tier}</strong>: Physical needs</p> */}
                 <p><strong>Agency</strong>: {details.agency}</p>
-                <p><strong>Location</strong>: {details.location}</p>
+                {/* <p><strong>Location</strong>: {details.location}</p> */}
                 <p><strong>County</strong>: {details.county}</p>
             </div>
             <hr/>

@@ -47,7 +47,7 @@ ul {
 }
 
 button {
-    background-color: #ff8c00;
+    background-color: #FF5D34;
     color: white;
     padding: 15px 25px;
     border: none;
@@ -73,7 +73,7 @@ button {
 hr {
     border: none;
     height: 3px;
-    background-color: #ff8c00;
+    background-color: #FF5D34;
     margin-left: 20px;
     margin-right: 20px;
 }
@@ -86,7 +86,7 @@ button:disabled {
 }
 
 .num-votes{
-    background-color: #ff8c00;
+    background-color: #FF5D34;
     color: white;
     font-size: 25px;
     margin-left: 20px;

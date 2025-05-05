@@ -11,7 +11,7 @@ const Results = () => {
 
 
     useEffect(() => {
-        const dates= {"1":"2025-05-06", "2": "2025-05-07", "3": "2025-05-09"}
+        const dates= {"1":"2025-05-06", "2": "2025-05-07", "3": "2025-05-08"}
 
         const fetchResults = async() => {
 
@@ -136,7 +136,7 @@ const Results = () => {
                 
                 // Fetch data from Supabase
                 const { data, error } = await supabase
-                  .from('test_users')
+                  .from('users')
                   .select('*');
                 
                 if (error) {
