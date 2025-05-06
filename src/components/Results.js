@@ -11,7 +11,7 @@ const Results = () => {
 
 
     useEffect(() => {
-        const dates= {"1":"2025-05-06", "2": "2025-05-07", "3": "2025-05-08"}
+        const dates= {"1":"2025-05-06", "2": "2025-05-07", "3": "2025-05-08", "4": "2025-05-09"}
 
         const fetchResults = async() => {
 
@@ -215,6 +215,7 @@ const Results = () => {
                     <option value="1">Day 1</option>
                     <option value="2">Day 2</option>
                     <option value="3">Day 3</option>
+                    <option value="4">Day 4</option>
                 </select>
             </div>
            
