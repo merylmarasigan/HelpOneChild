@@ -57,7 +57,10 @@ const Request = (props) => {
         <div className='card'>
             {votes !== null  && <p className='num-votes'>{votes} votes</p>}
             <div className='request-top'>
-                <p className='request-time'>⚠️ Within {timeframe[urgency]}</p>
+                {urgency === 'Normal' && <p className='request-time'>⚠️ Within {timeframe[urgency]}</p>}
+                {urgency === 'High' && <p className='request-time'>⚠️ ⚠️ Within {timeframe[urgency]}</p>}
+                {urgency === 'Urgent' && <p className='request-time'>⚠️ ⚠️ ⚠️ Within {timeframe[urgency]}</p>}
+
                 <p className='urgency'>Urgency: {urgency}</p>
             </div>
             <h2>{title}</h2>
