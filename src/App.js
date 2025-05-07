@@ -26,9 +26,9 @@ function App() {
   if(date < '2025-05-06'){
     date = '2025-05-06'
   }
-  if(date > '2025-05-09'){
-    date = '2025-05-09'
-  }
+  // if(date > '2025-05-09'){
+  //   date = '2025-05-09'
+  // }
   
   // Function to trigger a refetch
   const triggerRefetch = () => {
