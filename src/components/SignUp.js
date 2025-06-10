@@ -78,7 +78,7 @@ const SignUp = ({ onNavigateBack }) => {
             <div className='email-input'>
                 <label>Email:</label>
                 <input 
-                    type='text'
+                    type='email'
                     placeholder="janedoe@email.com"
                     onChange={(event) => {
                         setEmail(event.target.value)
